@@ -1,7 +1,6 @@
 # Dispatch Admin — Laravel админка
 
-Админ-консоль оператора/админа для `dispatch-core`. Часть полиглот-показа:
-**Python-ядро + Symfony-микросервис (edge) + Laravel-админка**.
+Админ-консоль оператора/админа для ядра `dispatch-core`; входит в полиглотную архитектуру проекта (Python-ядро + Symfony-edge + Laravel-admin).
 
 ## Что делает
 
@@ -9,7 +8,7 @@
 (`report:approve` / `report:reject` ядра) прямо из веб-интерфейса. Всё общение — через
 HTTP API ядра с admin-key. Никакой бизнес-логики в Laravel: она только презентует домен ядра.
 
-## Сборка (на стройплощадке, где есть PHP/Composer)
+## Установка (требуется PHP и Composer)
 
 ```bash
 composer create-project laravel/laravel dispatch-admin
@@ -58,9 +57,4 @@ CORE_ADMIN_API_KEY=change_me_admin_key
 без шага 2 POST-экшены вернут `419 CSRF`. Оба шага проверены живым запуском
 (`php artisan serve` + реальное ядро `dispatch-core`).
 
-## Чем демонстрирует инженерный уровень
 
-- **Laravel уместен там, где он силён**: CRUD/админка, Blade, маршруты, формы — быстро и чисто.
-- **Ports & adapters**: Laravel — ещё один адаптер к домену ядра; домен не дублируется.
-- **Тонкий клиент к контракту ядра** (`DispatchCoreApi`) — единственное место, знающее про HTTP ядра.
-- Ясное разделение: Python несёт бизнес-логику, Symfony — высоконагруженный edge, Laravel — люди.
